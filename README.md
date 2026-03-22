@@ -6,6 +6,9 @@ O aplicativo bate na plataforma de vagas do Mercado Livre (no sistema da Eightfo
 
 A aba de Chat transforma os dados numa conversa de fato. Você digita uma pergunta e a ferramenta lê as descrições das vagas locais para tentar achar a resposta. A integração roda em cima do Ollama. Se você configurar a instalação completa com suporte a RAG, ele levanta o ChromaDB com embeddings e faz buscas semânticas profundas. Se a sua máquina ou conexão não colaborarem para baixar GBs de tensores, a instalação padrão ignora o RAG e continua respondendo através de buscas simples por palavras-chave. Funciona dos dois jeitos.
 
+<img width="1098" height="720" alt="image" src="https://github.com/user-attachments/assets/0e3aaab7-9285-49e1-8d9f-4458a369bd55" />
+
+
 ## Como rodar localmente
 
 Eu uso `uv` porque gerenciar `pip` e `.venv` manualmente hoje em dia é perda de tempo.
@@ -36,7 +39,7 @@ uv run python -m stackradar
 O chat consome a API do Ollama na sua própria rede.
 
 1. Instale o aplicativo Ollama no seu sistema.
-2. Puxe um modelo bom para código no terminal, recomendo o Qwen (exemplo: `ollama pull qwen2.5:9b`).
+2. Puxe um modelo bom para código no terminal, recomendo o Qwen (exemplo: `ollama pull qwen3.5:9b`).
 3. Abra o StackRadar, vá no Dashboard e clique em **Atualizar vagas**. Isso abastece o banco SQLite na pasta oculta `%USERPROFILE%\.stackradar\vagas.db`.
 4. Mude para a aba Chat IA, configure a lateral com o nome do seu modelo e pergunte o que quiser.
 
