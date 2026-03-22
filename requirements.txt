@@ -1,0 +1,7 @@
+# Preferência: use UV (dependências principais estão em pyproject.toml).
+#   uv sync
+#   uv sync --extra playwright --extra rag --extra dev   # tudo
+# Legado equivalente:
+#   uv pip install -r requirements-legacy.txt
+
+-r requirements-legacy.txt

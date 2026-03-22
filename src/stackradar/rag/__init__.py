@@ -1,0 +1,1 @@
+# ChromaDB + embeddings (fase RAG)

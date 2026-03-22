@@ -1,0 +1,2 @@
+[console_scripts]
+stackradar = stackradar.app:main

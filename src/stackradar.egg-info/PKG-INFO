@@ -1,0 +1,77 @@
+Metadata-Version: 2.4
+Name: stackradar
+Version: 0.1.0
+Summary: Desktop app: Mercado Libre (Eightfold) jobs dashboard + AI chat
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: PyQt6<7,>=6.6.0
+Requires-Dist: matplotlib<4,>=3.8.0
+Requires-Dist: httpx[http2]<0.29,>=0.27.0
+Requires-Dist: groq<1,>=0.9.0
+Provides-Extra: playwright
+Requires-Dist: playwright<2,>=1.42.0; extra == "playwright"
+Provides-Extra: rag
+Requires-Dist: chromadb<0.6,>=0.5.13; extra == "rag"
+Requires-Dist: sentence-transformers<4,>=2.6.0; extra == "rag"
+Requires-Dist: torch<3,>=2.2.0; extra == "rag"
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8.0.0; extra == "dev"
+Requires-Dist: pyinstaller<7,>=6.3.0; extra == "dev"
+
+# StackRadar
+
+Aplicativo desktop (Python) que coleta vagas do Mercado Libre no Eightfold (`mercadolibre.eightfold.ai`), mantém histórico em SQLite, exibe um dashboard com frequência de tecnologias e oferece **chat com RAG** via **Ollama**. Por padrão a recuperação de trechos é por **palavras-chave** (sem dependências pesadas). Com `uv sync --extra rag` você habilita **ChromaDB + embeddings** (`sentence-transformers`).
+
+## Requisitos
+
+- Python 3.11+
+- Windows (desenvolvido e testado aqui); Linux/macOS devem funcionar com os mesmos passos.
+
+## Instalação (UV)
+
+[UV](https://docs.astral.sh/uv/) substitui pip/venv no fluxo recomendado.
+
+```bash
+cd StackRadar
+uv sync
+```
+
+Opcional — RAG semântico (Chroma + embeddings), Playwright, torch, testes, PyInstaller:
+
+```bash
+uv sync --extra rag
+uv sync --all-extras
+```
+
+### Ollama (chat)
+
+1. Instale [Ollama](https://ollama.com/) e puxe um modelo (ex.: `ollama pull qwen2.5:9b`).
+2. **Dashboard → Atualizar vagas** para preencher o SQLite.
+3. **Chat IA** → Ollama, URL e modelo; envie perguntas. **Sem** `chromadb`, o app usa busca por texto nas vagas.
+
+Para **Chroma** no Windows, prefira **Python 3.11 ou 3.12** (`uv sync --extra rag`); no **Python 3.14** a instalação costuma exigir compilação e falhar.
+
+## Executar
+
+```bash
+uv run python -m stackradar
+```
+
+Ou, após `uv sync`: ative `.venv` e use `python -m stackradar`.
+
+### Legado (`requirements.txt`)
+
+`requirements.txt` inclui `requirements-legacy.txt` para instalação completa com `uv pip install -r requirements.txt` se preferir.
+
+Na primeira execução, use **Dashboard → Atualizar vagas** para baixar apenas posições cujo **título contém `software`** (filtro também aplicado na API com `query=software`). Os dados ficam em `%USERPROFILE%\.stackradar\vagas.db`.
+
+## Testes
+
+```bash
+uv sync --extra dev
+uv run pytest tests/
+```
+
+## Empacotamento (futuro)
+
+PyInstaller e notas de bundle para Chroma/torch serão adicionados na fase de release.

@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.spec.user
+*.db
+*.db-journal
+.DS_Store
+
+# Documentos do assistente (Instruções internas)
+SKILL.md
+Humanizer.md
+
+# Application Data e Assets Genéricos
+.stackradar/
+assets/
