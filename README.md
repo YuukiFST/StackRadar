@@ -7,6 +7,7 @@ O aplicativo bate na plataforma de vagas do Mercado Livre (no sistema da Eightfo
 A aba de Chat transforma os dados numa conversa de fato. Você digita uma pergunta e a ferramenta lê as descrições das vagas locais para tentar achar a resposta. A integração roda em cima do Ollama. Se você configurar a instalação completa com suporte a RAG, ele levanta o ChromaDB com embeddings e faz buscas semânticas profundas. Se a sua máquina ou conexão não colaborarem para baixar GBs de tensores, a instalação padrão ignora o RAG e continua respondendo através de buscas simples por palavras-chave. Funciona dos dois jeitos.
 
 <img width="1098" height="720" alt="image" src="https://github.com/user-attachments/assets/0e3aaab7-9285-49e1-8d9f-4458a369bd55" />
+<img width="1101" height="711" alt="image" src="https://github.com/user-attachments/assets/4204a01c-2dbe-4635-93d7-1c1c2ca96810" />
 
 
 ## Como rodar localmente
